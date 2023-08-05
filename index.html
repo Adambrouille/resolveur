@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://cdn4.iconfinder.com/data/icons/superheroes/512/hulk-512.png">
+    <link href="/style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Résolution d'équations du second degré</title>
+</head>
+<body>
+  <h1>Résolution d'équations du second degré</h1>
+  <form id="equationForm">
+    <div class="section">
+    <label for="inputA">Coefficient a</label>
+    <input type="number" id="inputA" required>
+    <br>
+    <label for="inputB">Coefficient b</label>
+    <input type="number" id="inputB" required>
+    <br>
+    <label for="inputC">Coefficient c</label>
+    <input type="number" id="inputC" required>
+    <br>
+    <div class="button">
+    <input type="submit" value="Résoudre" id="button">
+    </div>
+</div>
+  </form>
+
+
+  <div id="result"></div>
+
+  <script>
+    document.getElementById("equationForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const a = parseFloat(document.getElementById("inputA").value);
+      const b = parseFloat(document.getElementById("inputB").value);
+      const c = parseFloat(document.getElementById("inputC").value);
+
+      const solutions = solveEquation(a, b, c);
+
+      displayResult(solutions);
+    });
+
+    function solveEquation(a, b, c) {
+      if (a === 0) {
+        throw new Error("Ce n'est pas une équation du second degré.");
+      }
+
+      const discriminant = b * b - 4 * a * c;
+
+      if (discriminant > 0) {
+        const x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+        const x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+        return [x1, x2];
+      } else if (discriminant === 0) {
+        const x = -b / (2 * a);
+        return [x];
+      } else {
+        return [];
+      }
+    }
+
+    function displayResult(solutions) {
+      const resultDiv = document.getElementById("result");
+
+      if (solutions.length === 0) {
+        resultDiv.textContent = "L'équation n'a pas de solutions réelles.";
+      } else if (solutions.length === 1) {
+        resultDiv.textContent = `La solution unique est x = ${solutions[0]}.`;
+      } else {
+        resultDiv.textContent = `Les solutions sont X1 = ${solutions[0]} et X2 = ${solutions[1]}.`;
+      }
+    }
+  </script>
+</body>
+</html>
