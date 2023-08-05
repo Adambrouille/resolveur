@@ -1,0 +1,59 @@
+* {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  color: #000000;
+}
+
+body {
+  background: #f2f2f2;
+  background-size: contain;
+  background-attachment: fixed;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  overflow: hidden;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#equationForm {
+  display: flex;
+  justify-content: center;
+}
+#equationForm .section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10%;
+  width: 50%;
+}
+#equationForm #inputA, #equationForm #inputB, #equationForm #inputC {
+  height: 1.7rem;
+  padding: 5px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 10%;
+}
+#equationForm .button {
+  display: flex;
+  justify-content: center;
+}
+#equationForm .button #button {
+  width: 100px;
+}
+#equationForm label {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+}
+
+#result {
+  text-align: center;
+  font-size: 20px;
+}
+
+/*# sourceMappingURL=style.css.map */
